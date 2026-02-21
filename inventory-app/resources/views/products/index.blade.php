@@ -8,7 +8,7 @@
             <h4>Product List</h4>
 
             @if(auth()->user()->role === 'admin')
-                <a href="{{ route('products.create') }}" class="btn btn-primary">
+                <a href="{{ url('/products/create') }}" class="btn btn-primary">
                     Tambah Product
                 </a>
             @endif
@@ -50,7 +50,12 @@
                         @endif
                     </td>
 
-                    <td>{{ $product->name }}</td>
+                    <td>
+                        <a href="{{ route('products.show', $product) }}"
+                            class="text-primary fw-semibold">
+                            {{ $product->name }}
+                        </a>
+                    </td>
                     <td>{{ $product->category->name ?? '-' }}</td>
                     <td>Rp {{ number_format($product->price) }}</td>
                     <td>{{ $product->stock }}</td>

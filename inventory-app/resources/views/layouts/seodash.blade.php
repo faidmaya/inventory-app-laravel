@@ -40,7 +40,7 @@
             <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                 <ul id="sidebarnav">
 
-                    {{-- DASHBOARD (ALL ROLE) --}}
+                    {{-- DASHBOARD --}}
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ route('dashboard') }}">
                             <span>
@@ -50,13 +50,12 @@
                         </a>
                     </li>
 
-                    {{-- ================= ADMIN ================= --}}
+                    {{-- ADMIN --}}
                     @if(auth()->user()->role === 'admin')
                         <li class="nav-small-cap">
                             <span class="hide-menu">MASTER DATA</span>
                         </li>
 
-                        {{-- CATEGORY (ADMIN ONLY) --}}
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('categories.index') }}">
                                 <span>
@@ -66,7 +65,6 @@
                             </a>
                         </li>
 
-                        {{-- PRODUCT (ADMIN) --}}
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('products.index') }}">
                                 <span>
@@ -77,7 +75,7 @@
                         </li>
                     @endif
 
-                    {{-- ================= STAFF ================= --}}
+                    {{-- STAFF --}}
                     @if(auth()->user()->role === 'staff')
                         <li class="nav-small-cap">
                             <span class="hide-menu">PRODUCT</span>
@@ -93,14 +91,14 @@
                         </li>
                     @endif
 
-                    {{-- ================= USER ================= --}}
+                    {{-- USER --}}
                     @if(auth()->user()->role === 'user')
                         <li class="nav-small-cap">
                             <span class="hide-menu">MENU</span>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="#">
+                            <a class="sidebar-link" href="{{ route('products.index') }}">
                                 <span>
                                     <iconify-icon icon="solar:box-bold-duotone" class="fs-6"></iconify-icon>
                                 </span>
@@ -109,7 +107,7 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('products.index') }}">
+                            <a class="sidebar-link" href="{{ route('transactions.index') }}">
                                 <span>
                                     <iconify-icon icon="solar:transfer-horizontal-bold-duotone" class="fs-6"></iconify-icon>
                                 </span>
@@ -153,8 +151,9 @@
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up">
                                 <div class="message-body">
 
+                                    {{-- ✅ FIX DI SINI --}}
                                     @if(auth()->user()->role === 'user')
-                                        <a href="#"
+                                        <a href="{{ route('user.profile.edit') }}"
                                            class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-user fs-6"></i>
                                             <p class="mb-0 fs-3">Edit Profile</p>
