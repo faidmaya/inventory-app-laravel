@@ -1,4 +1,4 @@
-# 📦 Investory App  
+# 📦 Inventory App  
 Final Project Laravel – Sanbercode Batch 70
 
 ---
