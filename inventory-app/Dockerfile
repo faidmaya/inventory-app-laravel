@@ -1,5 +1,8 @@
 FROM php:8.2-apache
 
+RUN a2dismod mpm_event \
+    && a2enmod mpm_prefork
+    
 RUN apt-get update && apt-get install -y \
     git unzip libzip-dev libpng-dev libonig-dev \
     && docker-php-ext-install pdo pdo_mysql zip mbstring gd
